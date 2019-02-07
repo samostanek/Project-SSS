@@ -11,7 +11,7 @@
   </head>
   <body class="reg">
     <div class="container-fluid">
-      <form action="/action_page.php" class="regf border">
+      <form action="includes/register.inc.php" class="regf border" method="post">
         <div class="form-group">
           <label for="username">Username:</label>
           <input type="Username" class="form-control" id="username" placeholder="Enter username" name="username">
@@ -28,7 +28,10 @@
           <label for="pwdrpt">Repeat password:</label>
           <input type="password" class="form-control" id="pwdrpt" placeholder="Repeat password" name="pwdrpt">
         </div>
-        <button type="submit" class="btn btn-outline-primary">Submit</button>
+        <button type="submit" name="submit" class="btn btn-outline-primary">Submit</button>
+        <?php
+
+        ?>
       </form>
     </div>
   </body>

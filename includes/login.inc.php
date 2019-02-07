@@ -37,7 +37,7 @@ if (isset($_POST['submit'])) {
           mysqli_stmt_bind_param($stmt, "s", $username);
           mysqli_stmt_execute($stmt);
           mysqli_stmt_store_result($stmt);
-          $resultCheck = mysqli_query($conn,$sql)
+          $resultCheck = mysqli_query($conn,$sql);
           $row = mysqli_fetch_array($resultCheck, MYSQLI_ASSOC);
           if (password_hash($password, PASSWORD_DEFAULT) == $row["pwd"]){
             header("Location: ../login.php?signup=success")

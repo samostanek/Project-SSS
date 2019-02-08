@@ -1,8 +1,6 @@
 <?php
 if (isset($_POST['submit'])) {
 
-  require 'dbconn.inc.php';
-
   $username = $_POST['username'];
   $email = $_POST['email'];
   $password = $_POST['pwd'];
@@ -28,6 +26,7 @@ if (isset($_POST['submit'])) {
     header("Location: ..register.php?error=invalidrpt&uid=".$username."&email=".$email);
   }
   else {
+    require 'dbconn.inc.php';
     $sql = "SELECT uName FROM users WHERE uName=?";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {

@@ -1,57 +1,39 @@
 <?php
 if (isset($_POST['submit'])) {
 
-  require 'dbconn.inc.php';
-
   $username = $_POST['username'];
   $password = $_POST['pwd'];
 
   if (empty($username) || empty($password)) {
     header("Location: ..login.php?error=emptyfields&uid=".$username);
     exit();
-  }
-  else {
-    $sql = "SELECT uName FROM users WHERE uName=?";
+  } else {
+    require 'dbconn.inc.php';
+    $sql = "SELECT * FROM users WHERE uName=? OR mail=?";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
       header("Location: ../login.php?error=sqlerror");
       exit();
-    }
-    else {
-      mysqli_stmt_bind_param($stmt, "s", $username);
+    } else {
+      mysqli_stmt_bind_param($stmt, "ss", $username, $username);
       mysqli_stmt_execute($stmt);
-      mysqli_stmt_store_result($stmt);
-      $resultCheck = mysqli_stmt_num_rows($stmt);
-      if ($resultCheck = 0) {
+      $result = mysqli_stmt_get_result($stmt);
+      if (!$row = mysqli_fetch_assoc($result)) {
         header("Location: ../login.php?error=nouser");
         exit();
-      }
-      else {
-        $sql = "SELECT pwd FROM users WHERE uName=?";
-        $stmt = mysqli_stmt_init($conn);
-        if (!mysqli_stmt_prepare($stmt, $sql)) {
-          header("Location: ../login.php?error=sqlerror");
+      } else {
+        $pwdCheck = password_verify($password, $row['pwd']);
+        if (!$pwdCheck) {
+          header("Location: ../login.php?error=wrongpwd");
           exit();
-        }
-        else {
-          mysqli_stmt_bind_param($stmt, "s", $username);
-          mysqli_stmt_execute($stmt);
-          mysqli_stmt_store_result($stmt);
-          $resultCheck = mysqli_query($conn, $sql);
-          if ($resultCheck) {
-            while ($row = mysqli_fetch_row($resultCheck)) {
-              if (password_hash($password, PASSWORD_DEFAULT) == $row["pwd"]){
-                header("Location: ../login.php?signup=success");
-                exit();
-              }
-            }
-          }
+        } else if ($pwdCheck) {
+          header("Location: ../login.php?login=success");
+          exit();
         }
       }
     }
   }
-}
-else {
+} else {
   header("Location: ../index.html");
   exit();
 }

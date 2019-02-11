@@ -21,6 +21,9 @@
           <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
         </div>
         <button type="submit" name="submit" class="btn btn-outline-primary">Submit</button>
+        <?php
+          echo $_GET['error'];
+        ?>
       </form>
     </div>
   </body>

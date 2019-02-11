@@ -14,16 +14,14 @@
       <form action="includes/login.inc.php" class="regf border" method="post">
         <div class="form-group">
           <label for="username">Username:</label>
-          <input type="Username" class="form-control" id="username" placeholder="Enter username" name="username">
+          <input <?php if (isset($_GET['uid'])) echo "value='".$_GET['uid']."'"?> required type="Username" class="form-control" id="username" placeholder="Enter username or e-mail" name="username">
         </div>
         <div class="form-group">
           <label for="pwd">Password:</label>
-          <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+          <input type="password" required class="form-control" id="pwd" placeholder="Enter password" name="pwd">
         </div>
         <button type="submit" name="submit" class="btn btn-outline-primary">Submit</button>
-        <?php
-          echo $_GET['error'];
-        ?>
+        <?php if (isset($_GET['error'])) echo "<span class='text-danger float-right mr-3'>".$_GET['error']."</span>";?>
       </form>
     </div>
   </body>

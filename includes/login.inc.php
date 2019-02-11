@@ -5,7 +5,7 @@ if (isset($_POST['submit'])) {
   $password = $_POST['pwd'];
 
   if (empty($username) || empty($password)) {
-    header("Location: ..login.php?error=emptyfields&uid=".$username);
+    header("Location: ../login.php?error=emptyfields&uid=".$username);
     exit();
   } else {
     require 'dbconn.inc.php';
@@ -27,7 +27,9 @@ if (isset($_POST['submit'])) {
           header("Location: ../login.php?error=wrongpwd");
           exit();
         } else if ($pwdCheck) {
-          header("Location: ../login.php?login=success");
+          header("Location: ../index.php");
+          $_SESSION["username"] = $row['uName'];
+          $_SESSION["userID"] = $row['userID'];
           exit();
         }
       }

@@ -65,3 +65,8 @@ form.regf {
 body.reg {
   background-color: #d5e8ed;
 }
+
+.not-logged {
+  position: fixed;
+  top: 50%;
+}

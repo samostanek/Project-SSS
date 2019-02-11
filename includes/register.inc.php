@@ -7,23 +7,23 @@ if (isset($_POST['submit'])) {
   $passwordRepeat = $_POST['pwdrpt'];
 
   if (empty($username) || empty($email) || empty($password) || empty($passwordRepeat)) {
-    header("Location: ..register.php?error=emptyfields&uid=".$username."&email=".$email);
+    header("Location: ../register.php?error=emptyfields&uid=".$username."&email=".$email);
     exit();
   }
   else if (!filter_var($email, FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-Z0-9]*$/", FILTER_VALIDATE_EMAIL)) {
-    header("Location: ..register.php?error=invalidmailuid");
+    header("Location: ../register.php?error=invalidmailuid");
     exit();
   }
   else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    header("Location: ..register.php?error=invalidmail&uid=".$username);
+    header("Location: ../register.php?error=invalidmail&uid=".$username);
     exit();
   }
   else if (!preg_match("/^[a-zA-Z0-9]*$/", FILTER_VALIDATE_EMAIL)) {
-    header("Location: ..register.php?error=invalidmail&email=".$email);
+    header("Location: ../register.php?error=invalidmail&email=".$email);
     exit();
   }
   else if ($password !== $passwordRepeat) {
-    header("Location: ..register.php?error=invalidrpt&uid=".$username."&email=".$email);
+    header("Location: ../register.php?error=invalidrpt&uid=".$username."&email=".$email);
   }
   else {
     require 'dbconn.inc.php';

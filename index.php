@@ -7,12 +7,16 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <?php if ($_GET['createstory'] == "nouser") echo "<script>var createstory = 'nouser';</script>";?>
   </head>
   <body>
+    <div class="alert alert-warning fixed-top" role="alert">
+      This is a warning alert—check it out!
+    </div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex py-0">
       <a class="navbar-brand" href="#">SSS</a>
 
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="includes/create.inc.php">
         <img class="d-inline-block align-top" src="resources/add-story-plus.png" alt="Add story" width="30">
       </a>
 
@@ -23,9 +27,19 @@
         </a>
         <div class="dropdown-menu dropdown-menu-right float-right">
           <h6 class="dropdown-header py-1">Profile</h6>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="login.php">Log In</a>
-          <a class="dropdown-item" href="register.php">Register</a>
+          <?php
+            if (!isset($_SESSION['username'])) {
+              echo '
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="login.php">Log In</a>
+              <a class="dropdown-item" href="register.php">Register</a>';
+            } else {
+              echo '
+              <p class="dropdown-header text-muted py-0">'.$_SESSION["username"].'</p>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="includes/logout.inc.php">Log out</a>';
+            }
+          ?>
         </div>
       </div>
     </nav>

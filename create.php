@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <!-- strom je zeleny
+    brano sa smeje
+    ja radsej pojdem
+    lebo ma zjebe
+    plusatanrubidny
+    pekny prvok je
+    len clovek zaludny
+    o nom vsak vie
+    takto sa zelena
+    v branovom vlase
+    brano sa uskrna
+    znova a zase -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Create a story</title>
@@ -12,8 +24,8 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex py-0">
       <a class="navbar-brand" href="#">SSS</a>
 
-      <a class="navbar-brand" href="#">
-        <img class="d-inline-block align-top" src="resources/add-story-plus.png" alt="Add story" width="30" href="create.php">
+      <a class="navbar-brand" href="includes/create.init.inc.php">
+        <img class="d-inline-block align-top" src="resources/add-story-plus.png" alt="Add story" width="30">
       </a>
 
       <span class="badge badge-primary ml-auto mr-3">0</span>
@@ -39,5 +51,48 @@
         </div>
       </div>
     </nav>
+    <h1 class="text-center">Create a new story</h1>
+    <div class="container">
+      <form action="includes/create.inc.php" method="post">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" class="form-control form-control-lg" name="name" id="name" placeholder="Name of your new story">
+        </div>
+        <div class="form-group">
+          <label for="desc">Description:</label>
+          <textarea type="text" class="form-control" id="desc" name="desc" placeholder="Description of your creation"></textarea>
+        </div>
+        <h5>Tags:</h5>
+        <div class="form-row ml-4">
+          <div class="col">
+            <input class="form-check-input" type="checkbox" value="" id="epic">
+            <label class="form-check-label" for="epic">Epic</label>
+          </div>
+          <div class="col">
+          <input class="form-check-input" type="checkbox" value="" id="lyric">
+            <label class="form-check-label" for="lyric">Lyric</label>
+          </div>
+          <div class="col">
+            <input class="form-check-input" type="checkbox" value="" id="prose">
+            <label class="form-check-label" for="prose">Prose</label>
+          </div>
+          <div class="col">
+            <input class="form-check-input" type="checkbox" value="" id="poetry">
+            <label class="form-check-label" for="poetry">Poetry</label>
+          </div>
+        </div>
+        <div class="input-group my-2">
+          <label for="more-tags" class="m-1">Custom tag:</label>
+          <input type="text" class="form-control" id="more-tags" placeholder="Add your own tag">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button">Button</button>
+          </div>
+        </div>
+        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>

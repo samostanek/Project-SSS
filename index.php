@@ -7,16 +7,18 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <?php if ($_GET['createstory'] == "nouser") echo "<script>var createstory = 'nouser';</script>";?>
   </head>
   <body>
-    <div class="alert alert-warning fixed-top" role="alert">
-      This is a warning alert—check it out!
-    </div>
+    <?php if (isset($_GET['createstory']) && $_GET['createstory'] == "nouser") echo '<div class="alert alert-warning alert-dismissible fade show m-0 py-2" id="alertnouser" role="alert">
+      <strong>You are not logged in!</strong> Log in firstly for do this action.
+        <button type="button" class="close p-2" style="padding-top: 0.32rem !important" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>';?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex py-0">
       <a class="navbar-brand" href="#">SSS</a>
 
-      <a class="navbar-brand" href="includes/create.inc.php">
+      <a class="navbar-brand" href="includes/create.init.inc.php">
         <img class="d-inline-block align-top" src="resources/add-story-plus.png" alt="Add story" width="30">
       </a>
 
@@ -228,9 +230,8 @@
 
       </div>
     </div>
-
     <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>

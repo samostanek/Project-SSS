@@ -65,19 +65,19 @@
         <h5>Tags:</h5>
         <div class="form-row ml-4">
           <div class="col">
-            <input class="form-check-input" type="checkbox" value="" id="epic">
+            <input class="form-check-input" name="tags[]" type="checkbox" value="epic" id="epic">
             <label class="form-check-label" for="epic">Epic</label>
           </div>
           <div class="col">
-          <input class="form-check-input" type="checkbox" value="" id="lyric">
+          <input class="form-check-input" name="tags[]" type="checkbox" value="lyric" id="lyric">
             <label class="form-check-label" for="lyric">Lyric</label>
           </div>
           <div class="col">
-            <input class="form-check-input" type="checkbox" value="" id="prose">
+            <input class="form-check-input" name="tags[]" type="checkbox" value="prose" id="prose">
             <label class="form-check-label" for="prose">Prose</label>
           </div>
           <div class="col">
-            <input class="form-check-input" type="checkbox" value="" id="poetry">
+            <input class="form-check-input" name="tags[]" type="checkbox" value="poetry" id="poetry">
             <label class="form-check-label" for="poetry">Poetry</label>
           </div>
         </div>

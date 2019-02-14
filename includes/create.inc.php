@@ -11,7 +11,6 @@ if (isset($_POST['submit'])) {
     header("Location: ../register.php?error=emptyfields&desc=".$desc);
     exit();
   } else if (!mysqli_stmt_prepare($stmt, 'SELECT title FROM stories WHERE title=?')) {
-    // header("Location: ../login.php?error=sqlerror");
     mysqli_error($conn);
     exit();
   } else {
@@ -23,12 +22,17 @@ if (isset($_POST['submit'])) {
       exit();
     } else {
       $stmt = mysqli_stmt_init($conn);
-      if (!mysqli_stmt_prepare($stmt, 'INSERT INTO stories (AID, title, description, tags, follwID, continuations, finished) VALUES ('.$_SESSION["userID"].', ?, ?, "[]", "[]", "[]", false)')) {
-        // header("Location: ../login.php?error=sqlerror");
+      if (!mysqli_stmt_prepare($stmt, 'INSERT INTO stories (AID, title, description, tags, follwID, continuations, finished) VALUES ('.$_SESSION["userID"].', ?, ?, ?, "[]", "[]", false)')) {
         echo mysqli_error($conn);
         exit();
       } else {
-        mysqli_stmt_bind_param($stmt, "ss", $name, $desc);
+        $tags = array();
+        if (isset($_POST['tags'])) {
+          foreach ($_POST['tags'] as $tag) {
+            if ($tag == true) array_push($tags, $tag);
+          }
+        }
+        mysqli_stmt_bind_param($stmt, "sss", $name, $desc, json_encode($tags));
         mysqli_stmt_execute($stmt);
         header("Location: ../create.php?storyadd=success");
         exit();

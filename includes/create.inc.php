@@ -8,7 +8,7 @@ if (isset($_POST['submit'])) {
   require 'dbconn.inc.php';
   $stmt = mysqli_stmt_init($conn);
   if (empty($name)) {
-    header("Location: ../register.php?error=emptyfields&desc=".$desc);
+    header("Location: ../create.php?error=emptyfields&desc=".$desc);
     exit();
   } else if (!mysqli_stmt_prepare($stmt, 'SELECT title FROM stories WHERE title=?')) {
     mysqli_error($conn);
@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
     mysqli_stmt_execute($stmt);
     mysqli_stmt_store_result($stmt);
     if (mysqli_stmt_num_rows($stmt) > 0) {
-      header("Location: ../register.php?error=nametaken&name=".$name."&desc=".$desc);
+      header("Location: ../create.php?error=nametaken&name=".$name."&desc=".$desc);
       exit();
     } else {
       $stmt = mysqli_stmt_init($conn);

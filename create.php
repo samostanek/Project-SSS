@@ -56,7 +56,8 @@
       <form action="includes/create.inc.php" method="post">
         <div class="form-group">
           <label for="name">Name:</label>
-          <input type="text" class="form-control form-control-lg" name="name" id="name" placeholder="Name of your new story">
+          <input type="text" class="form-control form-control-lg" required name="name" id="name" placeholder="Name of your new story">
+          <?php if (isset($_GET['error']) && $_GET['error'] == "nametaken") echo '<small class="text-danger">Name already taken</small>'; ?>
         </div>
         <div class="form-group">
           <label for="desc">Description:</label>

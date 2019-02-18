@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/jquery.tag-editor.css">
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex py-0">
@@ -74,6 +75,9 @@
       </form>
     </div>
     <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.caret.min.js"></script>
+    <script src="js/jquery.tag-editor.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
   </body>

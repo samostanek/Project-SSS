@@ -63,25 +63,6 @@
           <label for="desc">Description:</label>
           <textarea type="text" class="form-control" id="desc" name="desc" placeholder="Description of your creation"></textarea>
         </div>
-        <h5>Tags:</h5>
-        <div class="form-row ml-4">
-          <div class="col">
-            <input class="form-check-input" name="tags[]" type="checkbox" value="epic" id="epic">
-            <label class="form-check-label" for="epic">Epic</label>
-          </div>
-          <div class="col">
-          <input class="form-check-input" name="tags[]" type="checkbox" value="lyric" id="lyric">
-            <label class="form-check-label" for="lyric">Lyric</label>
-          </div>
-          <div class="col">
-            <input class="form-check-input" name="tags[]" type="checkbox" value="prose" id="prose">
-            <label class="form-check-label" for="prose">Prose</label>
-          </div>
-          <div class="col">
-            <input class="form-check-input" name="tags[]" type="checkbox" value="poetry" id="poetry">
-            <label class="form-check-label" for="poetry">Poetry</label>
-          </div>
-        </div>
         <div class="input-group my-2">
           <label for="more-tags" class="m-1">Custom tag:</label>
           <input type="text" class="form-control" id="more-tags" placeholder="Add your own tag">

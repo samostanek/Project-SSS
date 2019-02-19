@@ -22,16 +22,13 @@ if (isset($_POST['submit'])) {
       exit();
     } else {
       $stmt = mysqli_stmt_init($conn);
-      if (!mysqli_stmt_prepare($stmt, 'INSERT INTO stories (AID, title, description, tags, follwID, continuations, finished) VALUES ('.$_SESSION["userID"].', ?, ?, ?, "[]", "[]", false)')) {
+      if (!mysqli_stmt_prepare($stmt, 'INSERT INTO stories (AID, title, description, tags, follwID, continuations, finished, added, updated) VALUES ('.$_SESSION["userID"].', ?, ?, ?, "[]", "[]", false, now(), now())')) {
         echo mysqli_error($conn);
         exit();
       } else {
         $tags = array();
-        if (isset($_POST['tags'])) {
-          foreach ($_POST['tags'] as $tag) {
-            if ($tag == true) array_push($tags, $tag);
-          }
-        }
+        if (isset($_POST['tags'])) $tags = json_decode($_POST['tags']);
+
         mysqli_stmt_bind_param($stmt, "sss", $name, $desc, json_encode($tags));
         mysqli_stmt_execute($stmt);
         header("Location: ../create.php?storyadd=success");

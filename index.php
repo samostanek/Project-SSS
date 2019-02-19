@@ -38,6 +38,7 @@
             } else {
               echo '
               <p class="dropdown-header text-muted py-0">'.$_SESSION["username"].'</p>
+              <p class="dropdown-header text-muted py-0">'.$_SESSION["loginTime"].'</p>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="includes/logout.inc.php">Log out</a>';
             }

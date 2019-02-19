@@ -43,7 +43,7 @@ if (isset($_POST['submit'])) {
         exit();
       }
       else {
-        $sql = "INSERT INTO users (uName, mail, pwd) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO users (uName, mail, pwd, registered) VALUES (?, ?, ?, now())";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)) {
           header("Location: ../login.php?error=sqlerror");

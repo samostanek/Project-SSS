@@ -30,6 +30,7 @@ if (isset($_POST['submit'])) {
           header("Location: ../index.php");
           $_SESSION["username"] = $row['uName'];
           $_SESSION["userID"] = $row['userID'];
+          $_SESSION["loginTime"] = date('Y-m-d H:i:s');
           exit();
         }
       }

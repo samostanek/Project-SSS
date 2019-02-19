@@ -54,7 +54,7 @@
     </nav>
     <h1 class="text-center">Create a new story</h1>
     <div class="container">
-      <form action="includes/create.inc.php" method="post">
+      <form action="includes/create.inc.php" method="post" id="form">
         <div class="form-group">
           <label for="name">Name:</label>
           <input type="text" class="form-control form-control-lg" required name="name" id="name" placeholder="Name of your new story">
@@ -77,7 +77,7 @@
     <script src="js/jquery.tag-editor.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
-    <script type="text/javascript">
+    <script>
       $('#more-tags').tagEditor({         //TODO: CSS INPUT FORM
         autocomplete: {
           delay: 0,
@@ -99,6 +99,18 @@
         },
         delimeter: ', ',
         placeholder: 'Enter tags...'
+      });
+      $("#form").submit(function(eventObj) {
+        var tagsOrig = $('*').find('.tag-editor-tag');
+        console.log(tags);
+        var tags = [];
+        for (let i = 0; i < tagsOrig.length; i++) {
+          tags.push('"' + tagsOrig[i].innerHTML + '"');
+        }
+        $('<input />').attr('type', 'hidden')
+        .attr('name', 'tags')
+        .attr('value', "[" + tags.toString() + "]")
+        .appendTo('#form');
       });
     </script>
   </body>

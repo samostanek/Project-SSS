@@ -16,7 +16,7 @@
       </button>
     </div>';?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex py-0">
-      <a class="navbar-brand" href="#">SSS</a>
+      <a class="navbar-brand" href="index.php">SSS</a>
 
       <a class="navbar-brand" href="includes/create.init.inc.php">
         <img class="d-inline-block align-top" src="resources/add-story-plus.png" alt="Add story" width="30">

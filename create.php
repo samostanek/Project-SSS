@@ -23,7 +23,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex py-0">
-      <a class="navbar-brand" href="#">SSS</a>
+      <a class="navbar-brand" href="index.php">SSS</a>
 
       <a class="navbar-brand" href="includes/create.init.inc.php">
         <img class="d-inline-block align-top" src="resources/add-story-plus.png" alt="Add story" width="30">
@@ -65,11 +65,8 @@
           <textarea type="text" class="form-control" id="desc" name="desc" placeholder="Description of your creation"></textarea>
         </div>
         <div class="input-group my-2">
-          <label for="more-tags" class="m-1">Custom tag:</label>
+          <label for="more-tags" class="m-1">Add tags:</label>
           <input type="text" class="form-control" id="more-tags" placeholder="Add your own tag">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button">Button</button>
-          </div>
         </div>
         <button type="submit" name="submit" class="btn btn-primary">Submit</button>
       </form>
@@ -80,5 +77,29 @@
     <script src="js/jquery.tag-editor.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
+    <script type="text/javascript">
+      $('#more-tags').tagEditor({         //TODO: CSS INPUT FORM
+        autocomplete: {
+          delay: 0,
+          position: {collision : 'flip'},
+          source: <?php
+            require 'includes/dbconn.inc.php';
+            $stmt = mysqli_stmt_init($conn);
+            if (!mysqli_stmt_prepare($stmt, 'SELECT name FROM tags')) {
+              echo mysqli_error($conn);
+              exit();
+            } else {
+              mysqli_stmt_execute($stmt);
+              $result = mysqli_stmt_get_result($stmt);
+              $tags = array();
+              while ($tag = mysqli_fetch_assoc($result)) array_push($tags, $tag['name']);
+              echo json_encode($tags);
+            }
+          ?>
+        },
+        delimeter: ', ',
+        placeholder: 'Enter tags...'
+      });
+    </script>
   </body>
 </html>

@@ -70,6 +70,7 @@
         </div>
         <button type="submit" name="submit" class="btn btn-primary">Submit</button>
       </form>
+      <?php echo mail('samostanek@gmail.com', 'Test', wordwrap('Just test', 70, "\r\n")); ?>
     </div>
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>

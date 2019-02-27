@@ -47,9 +47,28 @@
       </div>
     </nav>
 
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
-        <div class="col-md-1-12">
+        <div class="col-md-8 mt-1">
+          <div class="d-flex p-1 bd-highlight">
+            <h3 class="mb-0">Name of the story</h3>
+            <div class="ranking ml-auto mt-1">
+              <span class="font-italic">Ranking:</span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+            </div>
+          </div>
+          <span class="text-muted ml-1">Author Name</span>
+          <div class="d-flex flex-row story-tags m-1">
+            <span class="font-italic badge badge-primary ml-0">Epic</span>
+            <span class="font-italic badge badge-primary">Novel</span>
+            <span class="font-italic badge badge-primary">Prose</span>
+          </div>
+        </div>
+        <div class="col-md-4 border-left">
 
         </div>
       </div>

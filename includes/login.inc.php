@@ -4,6 +4,8 @@ if (isset($_POST['submit'])) {
   $username = $_POST['username'];
   $password = $_POST['pwd'];
 
+  require 'sqllog.inc.php';
+
   if (empty($username) || empty($password)) {
     header("Location: ../login.php?error=emptyfields&uid=".$username);
     exit();
@@ -20,17 +22,20 @@ if (isset($_POST['submit'])) {
       $result = mysqli_stmt_get_result($stmt);
       if (!$row = mysqli_fetch_assoc($result)) {
         header("Location: ../login.php?error=nouser");
+        SQLlog($conn, "login", 'User with name or mail "'.$username.'" Not Found.', NULL, NULL);
         exit();
       } else {
         $pwdCheck = password_verify($password, $row['pwd']);
         if (!$pwdCheck) {
           header("Location: ../login.php?error=wrongpwd");
+          SQLlog($conn, "login", 'User "'.$row['uName'].'" entered Wrong Password.', $row['userID'], NULL);
           exit();
         } else if ($pwdCheck) {
           header("Location: ../index.php");
           $_SESSION["username"] = $row['uName'];
           $_SESSION["userID"] = $row['userID'];
           $_SESSION["loginTime"] = date('Y-m-d H:i:s');
+          SQLlog($conn, "login", 'User "'.$row['uName'].'" successfully Logged In.', $row['userID'], NULL);
           exit();
         }
       }

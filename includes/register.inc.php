@@ -27,19 +27,21 @@ if (isset($_POST['submit'])) {
   }
   else {
     require 'dbconn.inc.php';
-    $sql = "SELECT uName FROM users WHERE uName=?";
+    require 'sqllog.inc.php';
+    $sql = "SELECT uName FROM users WHERE uName=? OR mail=?";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
       header("Location: ../login.php?error=sqlerror");
       exit();
     }
     else {
-      mysqli_stmt_bind_param($stmt, "s", $username);
+      mysqli_stmt_bind_param($stmt, "ss", $username, $email);
       mysqli_stmt_execute($stmt);
       mysqli_stmt_store_result($stmt);
       $resultCheck = mysqli_stmt_num_rows($stmt);
       if ($resultCheck > 0) {
         header("Location: ../register.php?error=usertaken&mail=".$email);
+        SQLlog($conn, "register", 'User with username"'.$username.'" or email "'.$email.'" Already Taken.', NULL, NULL);
         exit();
       }
       else {
@@ -54,6 +56,9 @@ if (isset($_POST['submit'])) {
 
           mysqli_stmt_bind_param($stmt, "sss", $username, $email, $hashedPwd);
           mysqli_stmt_execute($stmt);
+
+          require 'sqllog.inc.php';
+          SQLlog($conn, "register", 'User "'.$username.'" successfully Registered.', mysqli_insert_id($conn), NULL);
           header("Location: ../register.php?signup=success");
           exit();
         }

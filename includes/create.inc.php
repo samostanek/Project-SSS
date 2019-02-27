@@ -6,6 +6,7 @@ $desc = $_POST['desc'];
 
 if (isset($_POST['submit'])) {
   require 'dbconn.inc.php';
+  require 'sqllog.inc.php';
   $stmt = mysqli_stmt_init($conn);
   if (empty($name)) {
     header("Location: ../create.php?error=emptyfields&desc=".$desc);
@@ -32,6 +33,7 @@ if (isset($_POST['submit'])) {
         mysqli_stmt_bind_param($stmt, "sss", $name, $desc, json_encode($tags));
         mysqli_stmt_execute($stmt);
         header("Location: ../create.php?storyadd=success");
+        SQLlog($conn, "story", 'User "'.$_SESSION['username'].'" successfully Created Story with name "'.$name.'".', $_SESSION['userID'], mysqli_insert_id($conn));
         exit();
       }
     }

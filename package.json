@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/samostanek/Project-SSS#readme",
   "dependencies": {
+    "ejs": "^2.6.1",
     "express": "^4.16.4",
     "mongodb": "^3.1.13"
   }

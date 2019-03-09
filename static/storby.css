@@ -1,0 +1,187 @@
+/*CSS*/
+
+/*body*/
+body{
+	margin: 0px;
+	padding: 0px;
+	font-family: Jost Semi ; /*font-family?*/
+}
+
+/*text-styling*/
+
+/*main-nav*/
+body .main-nav{
+	width: 100%;
+	height: 52px;
+	background-color: #741Ba6;
+	position: sticky;
+	top: 0px;
+	border-bottom: 2px solid grey;
+}
+
+body .main-nav .position{
+	width: 100%;
+	height: 52px;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+}
+
+body .main-nav .position .left{
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-start;
+}
+
+body .main-nav .position .left .logo{
+	width: 70px;
+	height: 26px;
+	margin-left: 20px;
+	margin-top: 13px;
+}
+
+body .main-nav .position .left .logo a{
+	text-decoration: none;
+}
+
+body .main-nav .position .left .logo a .photo{
+	width: 70px;
+	height: 26px;
+	background-image: url();
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-color: black;
+}
+
+body .main-nav .position .left .search{
+	height: 26px;
+	width: 400px;
+	margin-top: 13px;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-start;
+	margin-left: 40px;
+
+}
+
+body .main-nav .position .left .search input[type=text]{
+	width: 370px;
+	height: 16px;
+	border: none;
+	background-color: white;
+	padding-top: 5px;
+	padding: 5px;
+	padding-right: 5px;
+	padding-left: 5px;
+}
+
+body .main-nav .position .left .search input[type=text]:focus{
+	outline: none;
+}
+
+body .main-nav .position .left .search input[type=text]::placeholder{
+	color: rgb(147,147,147);
+	font-size: 115%;
+	font-weight: 900;
+}
+
+body .main-nav .position .left .search input[type=text]:focus::placeholder{
+	color: white;
+}
+
+body .main-nav .position .left .search input[type=button]{
+	height: 26px;
+	width: 26px;
+	background-color: white;
+	border: none;
+	background-image: url();
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-color: black;
+}
+
+body .main-nav .position .left .search input[type=button]:focus{
+	outline: none;
+}
+
+body .main-nav .position .right{
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-start;
+}
+
+body .main-nav .position .right .button{
+	width: 52px;
+	height: 52px;
+	background-color: red;
+	margin-right: 20px;
+}
+
+body .main-nav .position .right a{
+	text-decoration: none;
+}
+
+body .main-nav .position .right a .trick{
+	width: 52px;
+	height: 52px;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+}
+
+body .main-nav .position .right a .trick .icon1{
+	width: 30px;
+	margin-top: 11px;
+	height: 30px;
+	background-color: black;
+	background-image: url();
+	background-size: cover;
+	background-repeat: no-repeat; 
+}
+
+body .main-nav .position .right a .trick .icon2{
+	width: 30px;
+	margin-top: 11px;
+	height: 30px;
+	background-color: black;
+	background-image: url();
+	background-size: cover;
+	background-repeat: no-repeat; 
+}
+
+body .main-nav .position .right a .trick .icon3{
+	width: 30px;
+	margin-top: 11px;
+	height: 30px;
+	background-color: black;
+	background-image: url();
+	background-size: cover;
+	background-repeat: no-repeat; 
+}
+
+/*short-by-bar*/
+body .short-by-bar{
+	width: 100%;
+	height: 40px;
+	position: sticky;
+	top: 54px;
+	background-color: rgb(209,209,209);
+}
+
+body .short-by-bar .stories-box{
+	width: 70px;
+	height: 40px;
+	background-color: red;
+	margin-left: 40px;
+	
+}
+
+
+
+
+
+/*main-body*/
+body .main-body{
+	width: 100px;
+	height: 2000px;
+}

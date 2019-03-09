@@ -4,7 +4,7 @@
 body{
 	margin: 0px;
 	padding: 0px;
-	font-family: Jost Semi ; /*font-family?*/
+	font-family: Jost Semi ;
 }
 
 /*text-styling*/
@@ -19,7 +19,7 @@ body .main-nav{
 	border-bottom: 2px solid grey;
 }
 
-body .main-nav .position{
+body .main-nav .main-nav-items-layout{
 	width: 100%;
 	height: 52px;
 	display: flex;
@@ -27,24 +27,24 @@ body .main-nav .position{
 	justify-content: space-between;
 }
 
-body .main-nav .position .left{
+body .main-nav .main-nav-items-layout .left-bar{
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: flex-start;
 }
 
-body .main-nav .position .left .logo{
+body .main-nav .main-nav-items-layout .left-bar .logo{
 	width: 70px;
 	height: 26px;
 	margin-left: 20px;
 	margin-top: 13px;
 }
 
-body .main-nav .position .left .logo a{
+body .main-nav .main-nav-items-layout .left-bar .logo a{
 	text-decoration: none;
 }
 
-body .main-nav .position .left .logo a .photo{
+body .main-nav .main-nav-items-layout .left-bar .logo a .logo-link{
 	width: 70px;
 	height: 26px;
 	background-image: url();
@@ -53,7 +53,7 @@ body .main-nav .position .left .logo a .photo{
 	background-color: black;
 }
 
-body .main-nav .position .left .search{
+body .main-nav .main-nav-items-layout .left-bar .search-bar{
 	height: 26px;
 	width: 400px;
 	margin-top: 13px;
@@ -64,7 +64,7 @@ body .main-nav .position .left .search{
 
 }
 
-body .main-nav .position .left .search input[type=text]{
+body .main-nav .main-nav-items-layout .left-bar .search-bar input[type=text]{
 	width: 370px;
 	height: 16px;
 	border: none;
@@ -75,21 +75,21 @@ body .main-nav .position .left .search input[type=text]{
 	padding-left: 5px;
 }
 
-body .main-nav .position .left .search input[type=text]:focus{
+body .main-nav .main-nav-items-layout .left-bar .search-bar input[type=text]:focus{
 	outline: none;
 }
 
-body .main-nav .position .left .search input[type=text]::placeholder{
+body .main-nav .main-nav-items-layout .left-bar .search-bar input[type=text]::placeholder{
 	color: rgb(147,147,147);
 	font-size: 115%;
 	font-weight: 900;
 }
 
-body .main-nav .position .left .search input[type=text]:focus::placeholder{
+body .main-nav .main-nav-items-layout .left-bar .search-bar input[type=text]:focus::placeholder{
 	color: white;
 }
 
-body .main-nav .position .left .search input[type=button]{
+body .main-nav .main-nav-items-layout .left-bar .search-bar input[type=button]{
 	height: 26px;
 	width: 26px;
 	background-color: white;
@@ -100,28 +100,28 @@ body .main-nav .position .left .search input[type=button]{
 	background-color: black;
 }
 
-body .main-nav .position .left .search input[type=button]:focus{
+body .main-nav .main-nav-items-layout .left-bar .search-bar input[type=button]:focus{
 	outline: none;
 }
 
-body .main-nav .position .right{
+body .main-nav .main-nav-items-layout .right-bar{
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: flex-start;
 }
 
-body .main-nav .position .right .button{
+body .main-nav .main-nav-items-layout .right-bar .button{
 	width: 52px;
 	height: 52px;
 	background-color: red;
 	margin-right: 20px;
 }
 
-body .main-nav .position .right a{
+body .main-nav .main-nav-items-layout .right-bar a{
 	text-decoration: none;
 }
 
-body .main-nav .position .right a .trick{
+body .main-nav .main-nav-items-layout .right-bar a .link-size{
 	width: 52px;
 	height: 52px;
 	display: flex;
@@ -129,7 +129,7 @@ body .main-nav .position .right a .trick{
 	justify-content: center;
 }
 
-body .main-nav .position .right a .trick .icon1{
+body .main-nav .main-nav-items-layout .right-bar a .link-size .icon1{
 	width: 30px;
 	margin-top: 11px;
 	height: 30px;
@@ -139,7 +139,7 @@ body .main-nav .position .right a .trick .icon1{
 	background-repeat: no-repeat; 
 }
 
-body .main-nav .position .right a .trick .icon2{
+body .main-nav .main-nav-items-layout .right-bar a .link-size .icon2{
 	width: 30px;
 	margin-top: 11px;
 	height: 30px;
@@ -149,7 +149,7 @@ body .main-nav .position .right a .trick .icon2{
 	background-repeat: no-repeat; 
 }
 
-body .main-nav .position .right a .trick .icon3{
+body .main-nav .main-nav-items-layout .right-bar a .link-size .icon3{
 	width: 30px;
 	margin-top: 11px;
 	height: 30px;
@@ -160,7 +160,7 @@ body .main-nav .position .right a .trick .icon3{
 }
 
 /*short-by-bar*/
-body .short-by-bar{
+body .sort-by-bar{
 	width: 100%;
 	height: 40px;
 	position: sticky;
@@ -168,7 +168,7 @@ body .short-by-bar{
 	background-color: rgb(209,209,209);
 }
 
-body .short-by-bar .stories-box{
+body .sort-by-bar .stories-box{
 	width: 70px;
 	height: 40px;
 	background-color: red;

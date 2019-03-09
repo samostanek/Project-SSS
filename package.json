@@ -1,0 +1,30 @@
+{
+  "name": "project-sss",
+  "version": "0.1.4",
+  "description": "",
+  "main": "server_main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samostanek/Project-SSS.git"
+  },
+  "keywords": [
+    "story",
+    "cooperation",
+    "share",
+    "app",
+    "webpage"
+  ],
+  "author": "Samuel Stanek",
+  "license": "AGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/samostanek/Project-SSS/issues"
+  },
+  "homepage": "https://github.com/samostanek/Project-SSS#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongodb": "^3.1.13"
+  }
+}

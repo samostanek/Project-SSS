@@ -4,7 +4,7 @@
 body{
 	margin: 0px;
 	padding: 0px;
-	font-family: Jost Semi ;
+	font-family: Jost Semi;
 }
 
 /*text-styling*/
@@ -162,23 +162,63 @@ body .main-nav .main-nav-items-layout .right-bar a .link-size .icon3{
 /*short-by-bar*/
 body .sort-by-bar{
 	width: 100%;
-	height: 40px;
+	height: 45px;
 	position: sticky;
 	top: 54px;
-	background-color: rgb(209,209,209);
+	background-color: rgb(209,209,209);	
 }
+
+/* //waiting for responsive//  body .sort-by-bar .sort-by-bar-layout{
+	width: 100%;
+}*/
 
 body .sort-by-bar .stories-box{
-	width: 70px;
-	height: 40px;
-	background-color: red;
+	width: 75px;
+	height: 45px;
 	margin-left: 40px;
-	
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-around;
+}
+
+body .sort-by-bar .stories-box .text{
+	color: grey;
+	font-weight: 900;
+	font-size: 190%;
 }
 
 
+body .sort-by-bar .sort-by{
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-start;
+	background-color: white;
+	/*docasny margin - waiting for responsive*/
+	margin-left: 500px;
+}
 
+body .sort-by-bar .sort-by .button{
+	margin-top: -36px;
+	margin-right: 10px;
+}
+	
+body .sort-by-bar .sort-by .button button{
+	border: none;
+	padding: 8px;
+	font-size: 90%;
+	color: grey;
+	font-weight: 900;
+	background-color: rgb(209,209,209); 
+}
 
+body .sort-by-bar .sort-by .button button:focus{
+	outline: none;
+}
+
+body .sort-by-bar .sort-by .button #suggested{
+	background-color: #741Ba6;
+	color: white;
+}
 
 /*main-body*/
 body .main-body{

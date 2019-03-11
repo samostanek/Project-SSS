@@ -3,6 +3,8 @@
 <head>
 	<title>Storby</title>
 	<link rel="stylesheet" type="text/css" href="storby.css">
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquery-ui.min.js"></script>
 	<script> function SuggestedActive() {
 		document.getElementById('suggested').style.backgroundColor=['#741Ba6']
 		document.getElementById('suggested').style.color=['white']
@@ -69,18 +71,18 @@
 			</div>
 		</div>
 		<div class="sort-by-bar">
-			<div class="sort-by-bar-layout">		
+			<div class="sort-by-bar-layout">
 				<div class="stories-box" align>
-					<div class="text" align="center">Stories</div>	
+					<div class="text" align="center">Stories</div>
 				</div>
 				<div class="sort-by">
-					<div class="button">	
+					<div class="button">
 						<button id="suggested" onclick="SuggestedActive()">Suggested</button>
 					</div>
-					<div class="button">	
+					<div class="button">
 						<button id="recent" onclick="RecentActive()">Recent</button>
-					</div>				
-					<div class="button">	
+					</div>
+					<div class="button">
 						<button id="popular" onclick="PopularActive()">Popular</button>
 					</div>
 				</div>

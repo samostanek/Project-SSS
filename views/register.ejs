@@ -11,10 +11,10 @@
   </head>
   <body class="reg">
     <div class="container-fluid">
-      <form action="user/dbreg" class="regf border" method="post">
+      <form action="register" class="regf border" method="post">
         <div class="form-group">
           <label for="username">Username:</label>
-          <input type="Username" <?php if (isset($_GET['uid'])) echo "value='".$_GET['uid']."'"?> required class="form-control" id="username" placeholder="Enter username" name="username">
+          <input type="Username" name="username" required class="form-control" id="username" placeholder="Enter username" name="username">
         </div>
         <div class="form-group">
           <label for="email">Email:</label>
@@ -29,9 +29,9 @@
           <input type="password" required class="form-control" id="pwdrpt" placeholder="Repeat password" name="pwdrpt">
         </div>
         <button type="submit" name="submit" class="btn btn-outline-primary">Submit</button>
-        <?php
+        <!-- <?php
           if (isset($_GET['error'])) echo $_GET['error'];
-        ?>
+        ?> -->
       </form>
     </div>
   </body>

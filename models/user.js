@@ -2,10 +2,10 @@ const mongoose = require("mongoose");
 
 module.exports = mongoose.model(
   "user",
-  new mongoose.schema({
-    mail: { type: String, required: True },
-    uName: { type: String, required: True },
-    pwd: { type: String, required: True },
+  new mongoose.Schema({
+    mail: { type: String, required: true },
+    uName: { type: String, required: true },
+    pwd: { type: String, required: true },
     registered: { type: Date, default: Date.now }
   })
 );

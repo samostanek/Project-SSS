@@ -1,15 +1,15 @@
 const express = require("express");
+const session = require("express-session");
 const expressLayout = require("express-ejs-layouts");
 const mongoose = require("mongoose");
-
-// const mon
-
-const errShort = process.argv.indexOf("errShort") != -1;
-console.log(errShort);
+const flash = require("connect-flash");
 
 const port = 3000;
 
 const app = express();
+
+const errShort = process.argv.indexOf("errShort") == -1;
+console.log(errShort);
 
 //Publics
 app.use(express.static("public"));
@@ -22,8 +22,7 @@ app.use((req, res, next) => {
   next();
 });
 
-//Connect to mongodb
-
+//Connect to mongodb with retry
 var connectWithRetry = function() {
   return mongoose.connect(
     "mongodb://localhost:27017/storby",
@@ -47,7 +46,19 @@ app.set("view engine", "ejs");
 
 //Bodyparser
 app.use(express.urlencoded({ extended: false }));
+app.use(
+  session({
+    secret: "ojb4yd2q6fv66yl",
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false } // TODO: Set true when doing HTTPS
+  })
+);
 
+// Connect flash
+app.use(flash());
+
+// Routers
 app.use("/user", require("./routes/user"));
 app.use("/", require("./routes/index"));
 

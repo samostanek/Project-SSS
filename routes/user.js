@@ -4,7 +4,9 @@ const bcrypt = require("bcryptjs");
 
 const User = require("../models/user");
 
-router.get("/login", (req, res) => res.render("login"));
+router.get("/login", (req, res) => {
+  res.render("login", { msg: req.flash("msg_success") });
+});
 
 router.get("/register", (req, res) => res.render("register"));
 router.post("/register", (req, res) => {
@@ -37,6 +39,7 @@ router.post("/register", (req, res) => {
                 .save()
                 .then(user => {
                   console.log("User " + username + " registered successfully.");
+                  req.flash("msg_success", "You successfully registered!");
                   res.redirect("/login");
                 })
                 .catch(err => console.log(err));

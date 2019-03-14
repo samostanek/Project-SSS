@@ -22,10 +22,8 @@
         </div>
         <button type="submit" name="submit" class="btn btn-outline-primary">Submit</button>
         <div class="">
-          <% if (msg) { %>
-            <h2><%= msg %></h2>
-          <% } else {%>
-            <h2><%= 'MSG' %></h2>
+          <% if (msgError) { %>
+            <h2><%= msgError %></h2>
           <% } %>
         </div>
       </form>

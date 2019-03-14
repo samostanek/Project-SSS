@@ -7,7 +7,7 @@ const passport = require("passport");
 const User = require("../models/user");
 
 router.get("/login", (req, res) => {
-  res.render("login", { msg: req.flash("msg_success") });
+  res.render("login", { msgError: req.flash("error") });
 });
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", {
@@ -17,7 +17,16 @@ router.post("/login", (req, res, next) => {
   })(req, res, next);
 });
 
-router.get("/register", (req, res) => res.render("register", { errors: null, username: null, email: null }));
+router.get("/logout", (req, res) => {
+  util.log("LOGIN", "User logged out", req.user._id);
+  if (req.body.submit) req.logout();
+  req.flash("success_msg", "You are logged out");
+  res.redirect("/login");
+});
+
+router.get("/register", (req, res) =>
+  res.render("register", { errors: null, username: null, email: null })
+);
 router.post("/register", (req, res) => {
   const { username, email, pwd, pwdrpt } = req.body;
 
@@ -28,13 +37,18 @@ router.post("/register", (req, res) => {
   if (pwd.length < 5)
     errors.push({ msg: "Password must be at least 5 characters" });
   if (errors.length > 0) {
-    res.render("register", { errors: errors, username: username, email: email });
+    res.render("register", {
+      errors: errors,
+      username: username,
+      email: email
+    });
   } else {
     User.findOne({ $or: [{ mail: email }, { uName: username }] })
       .then(user => {
         if (user) {
           // TODO: Differenciate email and username
           errors.push({ msg: "Email or username already taken." });
+          util.log("REGISTER", "Email or username already taken", user._id);
           res.render("register", { errors, username, email });
         } else {
           const newUser = new User({ uName: username, mail: email, pwd: pwd });

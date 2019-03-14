@@ -6,30 +6,35 @@
 	<script> function SuggestedActive() {
 		document.getElementById('suggested').style.backgroundColor=['#741Ba6']
 		document.getElementById('suggested').style.color=['white']
-		document.getElementById('recent').style.backgroundColor=['rgb(209,209,209)']
+		document.getElementById('recent').style.backgroundColor=['#ededed']
 		document.getElementById('recent').style.color=['grey']
-		document.getElementById('popular').style.backgroundColor=['rgb(209,209,209)']
+		document.getElementById('popular').style.backgroundColor=['#ededed']
 		document.getElementById('popular').style.color=['grey']
 	}</script>
 	<script> function RecentActive() {
-		document.getElementById('suggested').style.backgroundColor=['rgb(209,209,209)']
+		document.getElementById('suggested').style.backgroundColor=['#ededed']
 		document.getElementById('suggested').style.color=['grey']
-		document.getElementById('recent').style.backgroundColor=['#741Ba6']
+		document.getElementById('recent').style.backgroundColor=['#741ba6']
 		document.getElementById('recent').style.color=['white']
-		document.getElementById('popular').style.backgroundColor=['rgb(209,209,209)']
+		document.getElementById('popular').style.backgroundColor=['#ededed']
 		document.getElementById('popular').style.color=['grey']
 	}</script>
 	<script> function PopularActive() {
-		document.getElementById('suggested').style.backgroundColor=['rgb(209,209,209)']
+		document.getElementById('suggested').style.backgroundColor=['#ededed']
 		document.getElementById('suggested').style.color=['grey']
-		document.getElementById('recent').style.backgroundColor=['rgb(209,209,209)']
+		document.getElementById('recent').style.backgroundColor=['#ededed']
 		document.getElementById('recent').style.color=['grey']
 		document.getElementById('popular').style.backgroundColor=['#741Ba6']
 		document.getElementById('popular').style.color=['white']
 	}</script>
+	<script type="text/javascript"> function displaySearchBar(){
+		if (document.getElementById('hidden')){	
+		}
+		
+	</script>
 </head>
 <body>
-	<div class="wrapper">
+	<div class="wrapper">	
 		<div class="main-nav">
 			<div class="main-nav-items-layout">
 				<div class="left-bar">
@@ -41,6 +46,9 @@
 					<div class="search-bar">
 						<input type="text" name="" placeholder="Search">
 						<input type="button" name="">
+						<!--button id="HiddenSearchBar" onclick="displaySearchBar()">
+							<input type="text" name="" class="hidden">
+						</button-->
 					</div>
 				</div>
 				<div class="right-bar">
@@ -68,29 +76,51 @@
 				</div>
 			</div>
 		</div>
-		<div class="sort-by-bar">
-			<div class="sort-by-bar-layout">		
-				<div class="stories-box" align>
-					<div class="text" align="center">Stories</div>	
-				</div>
-				<div class="sort-by">
-					<div class="button">	
-						<button id="suggested" onclick="SuggestedActive()">Suggested</button>
-					</div>
-					<div class="button">	
-						<button id="recent" onclick="RecentActive()">Recent</button>
-					</div>				
-					<div class="button">	
-						<button id="popular" onclick="PopularActive()">Popular</button>
+		<div class="main-body">	
+			<div class="sort-by-bar">
+				<div class="sort-by-bar-layout">		
+					<div class="sort-by">
+						<div class="button">	
+							<button id="suggested" onclick="SuggestedActive()">Suggested</button>
+						</div>
+						<div class="button">	
+							<button id="recent" onclick="RecentActive()">Recent</button>
+						</div>				
+						<div class="button">	
+							<button id="popular" onclick="PopularActive()">Popular</button>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-
-
-
-
-		<div class="main-body">
+			<div class="nav-left">
+				<div class="stories-box" align>
+					<div class="stories-box-layout">
+						<div class="text" align="center">Stories</div>	
+					</div>
+				</div>
+				<div class="list">
+					<div class="item">
+					</div>
+					<div class="item">
+					</div>
+					<div class="item">
+					</div>
+				</div>			
+				<div class="ad">
+					Ad place
+				</div>
+				<div class="links">
+					<a href="">About Storby</a>
+					<a href="">FAQ</a>
+					<a href="">Contant us</a>
+					<a href="">Settings</a>
+					<a href="">Developers</a>
+					<a href="">Terms of use</a>
+				</div>
+				<div class="copyright">
+					© 2019 Storby
+				</div>
+			</div>
 		</div>
 	</div>
 </body>

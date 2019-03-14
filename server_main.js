@@ -28,7 +28,7 @@ var connectWithRetry = function() {
         if (!errShort) console.error(err);
         setTimeout(connectWithRetry, 5000);
       } else {
-        console.log("successfully connected.");
+        console.log("Successfully connected to database.");
         util.log("SERVER", "Successfully connected to DB");
       }
     }

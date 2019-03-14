@@ -17,18 +17,18 @@ router.post("/login", (req, res, next) => {
   })(req, res, next);
 });
 
-router.get("/register", (req, res) => res.render("register"));
+router.get("/register", (req, res) => res.render("register", { errors: null, username: null, email: null }));
 router.post("/register", (req, res) => {
   const { username, email, pwd, pwdrpt } = req.body;
 
-  let errors = [];
+  var errors = [];
   if (!username || !email || !pwd || !pwdrpt)
     errors.push({ msg: "Please fill in all fields." });
   if (pwd !== pwdrpt) errors.push({ msg: "Passwords do not match." });
   if (pwd.length < 5)
     errors.push({ msg: "Password must be at least 5 characters" });
   if (errors.length > 0) {
-    res.render("register", { errors, username, email });
+    res.render("register", { errors: errors, username: username, email: email });
   } else {
     User.findOne({ $or: [{ mail: email }, { uName: username }] })
       .then(user => {

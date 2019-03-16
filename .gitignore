@@ -1,2 +1,4 @@
 .idea
+.jshintrc
 node_modules
+storby_admin

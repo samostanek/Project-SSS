@@ -7,14 +7,15 @@ const passport = require("passport");
 const User = require("../models/user");
 
 router.get("/login", (req, res) => {
-  res.render("login", { msgError: req.flash("error") });
+  console.log('test');
+	res.render("login", { msgError: req.flash("error"), msg_success: req.flash("msg_success")});
 });
 router.post("/login", (req, res, next) => {
-  passport.authenticate("local", {
-    successRedirect: "../",
-    failureRedirect: "./login",
-    failureFlash: true
-  })(req, res, next);
+	passport.authenticate("local", {
+		successRedirect: "../",
+		failureRedirect: "./login",
+		failureFlash: true
+	})(req, res, next);
 });
 
 router.get("/logout", (req, res) => {
@@ -25,10 +26,10 @@ router.get("/logout", (req, res) => {
 });
 
 router.get("/register", (req, res) =>
-  res.render("register", { errors: null, username: null, email: null })
+	res.render("register", { errors: null, username: null, email: null })
 );
 router.post("/register", (req, res) => {
-  const { username, email, pwd, pwdrpt } = req.body;
+	const { username, email, pwd, pwdrpt } = req.body;
 
   var errors = [];
   if (!username || !email || !pwd || !pwdrpt)

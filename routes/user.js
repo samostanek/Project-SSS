@@ -22,7 +22,7 @@ router.get("/logout", (req, res) => {
   util.log("SERVER", "LOGIN", null, req.ip, null, "User has logged out", req.user.uName, req.user._id, null);
   if (req.body.submit) req.logout();
   req.flash("success_msg", "You are logged out");
-  res.redirect("/login");
+  res.redirect("./login");
 });
 
 router.get("/register", (req, res) =>

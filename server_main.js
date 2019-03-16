@@ -44,7 +44,7 @@ app.use(
   morgan(":date - :method - :url - :remote-addr - :status - :response-time")
 );
 app.use((req, res, next) => {
-  util.log("SERVER", "REQUEST", req.method, req.ip, req.path, "", req.user ? req.user.uName : null, req.user ? req.user._id : null, res.status);
+  util.log("SERVER", "REQUEST", req.method, req.ip, req.path, "", req.user ? req.user.uName : null, req.user ? req.user._id : null, res.statusCode);
   next();
 });
 

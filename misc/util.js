@@ -1,12 +1,11 @@
 module.exports = {
-  log: function(sys, msg, uid, sid) {
+  log: function(sys, type, msg, optional) {
     const Log = require("../models/log");
-    new Log({
+    new Log(Object.assign({
       sys: sys,
-      message: msg,
-      userID: uid,
-      storyID: sid
-    })
+      type: type,
+      message: msg
+    }, optional))
       .save()
       .catch(err => console.error(err));
   }

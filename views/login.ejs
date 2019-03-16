@@ -21,6 +21,14 @@
           <input type="password" required class="form-control" id="pwd" placeholder="Enter password" name="password">
         </div>
         <button type="submit" name="submit" class="btn btn-outline-primary">Submit</button>
+        <div class="">
+          <% if (msgError) { %>
+            <h2><%= msgError %></h2>
+          <% } %>
+          <% if (msg_success) { %>
+            <h2><%= msg_success %></h2>
+          <% } %>
+        </div>
       </form>
     </div>
   </body>

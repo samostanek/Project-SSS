@@ -29,7 +29,7 @@ var connectWithRetry = function() {
         setTimeout(connectWithRetry, 5000);
       } else {
         console.log("Successfully connected to database.");
-        util.log("SERVER", "Successfully connected to DB");
+        util.log("SERVER", "STARTUP", "Successfully connected to DB", {});
       }
     }
   );
@@ -38,18 +38,6 @@ connectWithRetry();
 
 //Publics
 app.use(express.static("public"));
-
-// Connection logging
-app.use(
-  morgan(":date - :method - :url - :remote-addr - :status - :response-time")
-);
-app.use((req, res, next) => {
-  util.log(
-    "SERVER",
-    req.method + " request from: " + req.ip + " and path: " + req.path
-  );
-  next();
-});
 
 //EJS
 app.use(expressLayout);
@@ -69,6 +57,22 @@ app.use(
 // Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Connection logging
+app.use(
+  morgan(":date - :method - :url - :remote-addr - :status - :response-time")
+);
+app.use((req, res, next) => {
+  util.log("SERVER", "REQUEST", "", {
+    request_method: req.method,
+    ip: req.ip,
+    path: req.path,
+    username: req.user ? req.user.uName : null,
+    userID: req.user ? req.user._id : null,
+    status: res.statusCode
+  });
+  next();
+});
 
 // Connect flash
 app.use(flash());

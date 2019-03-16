@@ -9,7 +9,7 @@ module.exports = mongoose.model(
     request_method: { type: String, default: null },
     ip: { type: String, default: null },
     path: { type: String, default: null },
-    message: { type: String, required: true },
+    message: { type: String, default: null },
     username: { type: String, default: null },
     userID: { type: ObjectId, default: null },
     status: { type: String, default: null },

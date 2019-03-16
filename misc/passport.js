@@ -12,8 +12,15 @@ module.exports = passport => {
         if (!user) {
           console.log("Email " + email + " not registered");
           util.log(
+            "USER",
             "LOGIN",
-            "User tried to login with mail/uName: " + email + ". NOT FOUND"
+            null,
+            null,
+            null,
+            "User tried to login: failed. " + email + "not found.",
+            email,
+            null,
+            null
           );
           return done(null, false, { message: "Email not registered." });
         }
@@ -22,11 +29,32 @@ module.exports = passport => {
           if (err) throw err;
           if (isMatch) {
             console.log("User with email " + email + " logged in.");
-            util.log("LOGIN", "User successfully logged in.", user._id);
+            util.log(
+              "USER",
+              "LOGIN",
+              null,
+              null,
+              null,
+              "User " + user.uName + " successfully logged in.",
+              user.uName,
+              user.id,
+              null
+            );
             return done(null, user);
           } else {
             console.log("User with email " + email + " has wrong password");
-            util.log("LOGIN", "User has wrong password in.", user._id);
+            util.log(
+              "USER",
+              "LOGIN",
+              null,
+              null,
+              null,
+              "User tried to login: failed. " +
+                user.uName +
+                " has wrong password in.",
+              user.uName,
+              user.id
+            );
             return done(null, false, { message: "Password incorrect." });
           }
         });

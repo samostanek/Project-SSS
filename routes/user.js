@@ -18,7 +18,7 @@ router.post("/login", (req, res, next) => {
 });
 
 router.get("/logout", (req, res) => {
-  util.log("LOGIN", "User logged out", req.user._id);
+  util.log("SERVER", "LOGIN", null, req.ip, null, "User has logged out", req.user.uName, req.user._id, null);
   if (req.body.submit) req.logout();
   req.flash("success_msg", "You are logged out");
   res.redirect("/login");
@@ -48,7 +48,7 @@ router.post("/register", (req, res) => {
         if (user) {
           // TODO: Differenciate email and username
           errors.push({ msg: "Email or username already taken." });
-          util.log("REGISTER", "Email or username already taken", user._id);
+          util.log("USER", "REGISTER", null, req.ip, null, "User tried to register: failed. Email or username is already taken", user.uName, user._id, null);
           res.render("register", { errors, username, email });
         } else {
           const newUser = new User({ uName: username, mail: email, pwd: pwd });
@@ -61,11 +61,8 @@ router.post("/register", (req, res) => {
               newUser
                 .save()
                 .then(user => {
-                  console.log("User " + username + " registered successfully.");
-                  util.log(
-                    "REGISTER",
-                    "User " + username + " successfully registered."
-                  );
+                  console.log("User " + user.uName + " registered successfully.");
+                  util.log("USER", "REGISTER", null, req.ip, null, "User successfully registered.", user.uName, user._id, null);
                   req.flash("msg_success", "You successfully registered!");
                   res.redirect("/user/login");
                 })

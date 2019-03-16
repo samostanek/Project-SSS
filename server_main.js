@@ -29,7 +29,7 @@ var connectWithRetry = function() {
         setTimeout(connectWithRetry, 5000);
       } else {
         console.log("Successfully connected to database.");
-        util.log("SERVER", "Successfully connected to DB");
+        util.log("SERVER", "STARTUP", null, null, null, "Successfully connected to DB", null, null, null);
       }
     }
   );
@@ -44,10 +44,7 @@ app.use(
   morgan(":date - :method - :url - :remote-addr - :status - :response-time")
 );
 app.use((req, res, next) => {
-  util.log(
-    "SERVER",
-    req.method + " request from: " + req.ip + " and path: " + req.path
-  );
+  util.log("SERVER", "REQUEST", req.method, req.ip, req.path, "", req.user ? req.user.uName : null, req.user ? req.user._id : null, res.status);
   next();
 });
 

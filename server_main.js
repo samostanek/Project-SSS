@@ -6,6 +6,7 @@ const flash = require("connect-flash");
 const util = require("./misc/util");
 const passport = require("passport");
 const morgan = require("morgan");
+const fs = require('fs');
 
 const port = 3000;
 
@@ -18,7 +19,7 @@ const errShort = process.argv.indexOf("errShort") != -1;
 //Connect to mongodb with retry
 var connectWithRetry = function() {
   return mongoose.connect(
-    "mongodb://localhost:27017/storby",
+    fs.readFileSync('DBA.txt', 'utf8'),
     { useNewUrlParser: true },
     function(err) {
       if (err) {

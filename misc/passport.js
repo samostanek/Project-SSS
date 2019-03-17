@@ -11,17 +11,7 @@ module.exports = passport => {
       User.findOne({ $or: [{ mail: email }, { uName: email }] }).then(user => {
         if (!user) {
           console.log("Email " + email + " not registered");
-          util.log(
-            "USER",
-            "LOGIN",
-            null,
-            null,
-            null,
-            "User tried to login: failed. " + email + "not found.",
-            email,
-            null,
-            null
-          );
+          util.log("USER", "LOGIN", "User tried to login: failed. User not found.", {username: email});
           return done(null, false, { message: "Email not registered." });
         }
         // Match Password
@@ -29,32 +19,11 @@ module.exports = passport => {
           if (err) throw err;
           if (isMatch) {
             console.log("User with email " + email + " logged in.");
-            util.log(
-              "USER",
-              "LOGIN",
-              null,
-              null,
-              null,
-              "User " + user.uName + " successfully logged in.",
-              user.uName,
-              user.id,
-              null
-            );
+            util.log("USER", "LOGIN", "User successfully logged in", {username: user.uName, userID: user.id});
             return done(null, user);
           } else {
             console.log("User with email " + email + " has wrong password");
-            util.log(
-              "USER",
-              "LOGIN",
-              null,
-              null,
-              null,
-              "User tried to login: failed. " +
-                user.uName +
-                " has wrong password in.",
-              user.uName,
-              user.id
-            );
+            util.log("USER", "LOGIN", "User tried to login: failed. Wrong password.", {username: user.uName, userID: user.id});
             return done(null, false, { message: "Password incorrect." });
           }
         });

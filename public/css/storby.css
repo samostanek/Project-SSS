@@ -1,23 +1,24 @@
 /*CSS*/
 
 /*Text styles*/
-@font-face {
+@font-face{
   font-family: "Jost Semi";
-  src: url(../fonts/Jost-600-Semi.ttf);
+  src: url(fonts/Jost-600-Semi.ttf);
 }
 
+
+
 /*body*/
-body {
+body{
   margin: 0px;
   padding: 0px;
-  font-family: "Jost Semi", Arial;
-  min-width: 470px;
+  font-family: 'Jost Semi', Arial;
 }
 
 /*text-styling*/
 
 /*main-nav*/
-body .main-nav {
+body .main-nav{
   width: 100%;
   height: 52px;
   background-color: #7d29ac;
@@ -25,34 +26,35 @@ body .main-nav {
   top: 0px;
 }
 
-body .main-nav .main-nav-items-layout {
+body .main-nav .main-nav-items-layout{
   width: 100%;
   height: 52px;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-  border-bottom: 2px solid rgb(0, 0, 0, 0.5);
+  border-bottom: 2px solid rgb(0,0,0,.5);
 }
 
-body .main-nav .main-nav-items-layout .left-bar {
+body .main-nav .main-nav-items-layout .left-bar{
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   width: 640px;
 }
 
-body .main-nav .main-nav-items-layout .left-bar .logo {
+body .main-nav .main-nav-items-layout .left-bar .logo{
   width: 70px;
   height: 26px;
   margin-left: 20px;
   margin-top: 13px;
+  display: block;
 }
 
-body .main-nav .main-nav-items-layout .left-bar .logo a {
+body .main-nav .main-nav-items-layout .left-bar .logo a{
   text-decoration: none;
 }
 
-body .main-nav .main-nav-items-layout .left-bar .logo a .logo-link {
+body .main-nav .main-nav-items-layout .left-bar .logo a .logo-link{
   width: 70px;
   height: 26px;
   background-image: url();
@@ -61,7 +63,7 @@ body .main-nav .main-nav-items-layout .left-bar .logo a .logo-link {
   background-color: black;
 }
 
-body .main-nav .main-nav-items-layout .left-bar .search-bar {
+body .main-nav .main-nav-items-layout .left-bar .search-bar{
   height: 26px;
   width: 400px;
   margin-top: 13px;
@@ -69,53 +71,35 @@ body .main-nav .main-nav-items-layout .left-bar .search-bar {
   flex-flow: row nowrap;
   justify-content: flex-start;
   margin-left: 20px;
+
+
 }
 
-body .main-nav .main-nav-items-layout .left-bar .search-bar input[type="text"] {
+body .main-nav .main-nav-items-layout .left-bar .search-bar input[type=text]{
   width: 370px;
   height: 16px;
   border: none;
   background-color: white;
   padding: 5px;
-  font-family: "Jost Semi";
+  font-family: 'Jost Semi';
 }
 
-body
-  .main-nav
-  .main-nav-items-layout
-  .left-bar
-  .search-bar
-  input[type="text"]:focus {
+body .main-nav .main-nav-items-layout .left-bar .search-bar input[type=text]:focus{
   outline: none;
 }
 
-body
-  .main-nav
-  .main-nav-items-layout
-  .left-bar
-  .search-bar
-  input[type="text"]::placeholder {
-  color: rgb(147, 147, 147);
+body .main-nav .main-nav-items-layout .left-bar .search-bar input[type=text]::placeholder{
+  color: rgb(147,147,147);
   font-size: 130%;
   font-weight: 900;
-  font-family: "Jost Semi";
+  font-family: 'Jost Semi';
 }
 
-body
-  .main-nav
-  .main-nav-items-layout
-  .left-bar
-  .search-bar
-  input[type="text"]:focus::placeholder {
+body .main-nav .main-nav-items-layout .left-bar .search-bar input[type=text]:focus::placeholder{
   color: white;
 }
 
-body
-  .main-nav
-  .main-nav-items-layout
-  .left-bar
-  .search-bar
-  input[type="button"] {
+body .main-nav .main-nav-items-layout .left-bar .search-bar input[type=button]{
   height: 26px;
   width: 26px;
   background-color: white;
@@ -126,63 +110,113 @@ body
   background-color: black;
 }
 
-body
-  .main-nav
-  .main-nav-items-layout
-  .left-bar
-  .search-bar
-  input[type="button"]:focus {
+body .main-nav .main-nav-items-layout .right-bar button{
+  display: none;
+}
+
+body .main-nav .main-nav-items-layout .left-bar .search-bar input[type=button]:focus{
   outline: none;
 }
 
-@media only screen and (max-width: 760px) {
-  body
-    .main-nav
-    .main-nav-items-layout
-    .left-bar
-    .search-bar
-    input[type="text"] {
+@media only screen and (max-width: 760px) and (min-width: 581px){
+  body .main-nav .main-nav-items-layout .left-bar .search-bar input[type=text]{
     width: 93.9%;
+    display: block;
   }
 
-  body .main-nav .main-nav-items-layout .left-bar .search-bar {
+  body .main-nav .main-nav-items-layout .left-bar .search-bar{
     width: 71.42%;
   }
 
-  body .main-nav .main-nav-items-layout .left-bar {
+  body .main-nav .main-nav-items-layout .right-bar{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    margin-left: 20px;
   }
-}
+} 
 
-@media only screen and (max-width: 580) {
-  body
-    .main-nav
-    .main-nav-items-layout
-    .left-bar
-    .search-bar
-    input[type="text"] {
+@media only screen and (max-width: 400px){
+  body .main-nav .main-nav-items-layout .left-bar .search-bar input[type=text]{
     display: none;
   }
+
+  body .main-nav .main-nav-items-layout .right-bar button{
+    display: block;
+    width: 52px;
+    height: 52px;
+    background-color: red;
+    margin-right: 20px;
+    border: none;
+    cursor: pointer;
+  }
+
+  body .main-nav .main-nav-items-layout .right-bar button:focus{
+    outline: none;
+  }
+
+  body .main-nav .main-nav-items-layout .left-bar .search-bar input[type=button]{
+    display: none;
+  }
+
+  body .main-nav .main-nav-items-layout .left-bar{
+    display: none;
+  }
+
+  body .main-nav .main-nav-items-layout{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+  }
 }
 
-body .main-nav .main-nav-items-layout .right-bar {
+@media only screen and (max-width: 580px)  and (min-width: 401px){
+  body .main-nav .main-nav-items-layout .left-bar .search-bar input[type=text]{
+    display: none;
+  }
+  
+  body .main-nav .main-nav-items-layout .right-bar button{
+    display: block;
+    width: 52px;
+    height: 52px;
+    background-color: red;
+    margin-right: 20px;
+    border: none;
+    cursor: pointer;
+  }
+
+  body .main-nav .main-nav-items-layout .right-bar button:focus{
+    outline: none;
+  }
+
+  body .main-nav .main-nav-items-layout .left-bar .search-bar input[type=button]{
+    display: none;
+  }
+
+  body .main-nav .main-nav-items-layout .left-bar{
+    width: 10%;
+  }
+}
+
+body .main-nav .main-nav-items-layout .right-bar{
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
   margin-left: 20px;
 }
 
-body .main-nav .main-nav-items-layout .right-bar .button {
+body .main-nav .main-nav-items-layout .right-bar .button{
   width: 52px;
   height: 52px;
   background-color: red;
   margin-right: 20px;
 }
 
-body .main-nav .main-nav-items-layout .right-bar a {
+body .main-nav .main-nav-items-layout .right-bar a{
   text-decoration: none;
 }
 
-body .main-nav .main-nav-items-layout .right-bar a .link-size {
+body .main-nav .main-nav-items-layout .right-bar a .link-size{
   width: 52px;
   height: 52px;
   display: flex;
@@ -190,59 +224,60 @@ body .main-nav .main-nav-items-layout .right-bar a .link-size {
   justify-content: center;
 }
 
-body .main-nav .main-nav-items-layout .right-bar a .link-size .icon1 {
+body .main-nav .main-nav-items-layout .right-bar a .link-size .icon1{
   width: 30px;
   margin-top: 11px;
   height: 30px;
   background-color: black;
   background-image: url();
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; 
 }
 
-body .main-nav .main-nav-items-layout .right-bar a .link-size .icon2 {
+body .main-nav .main-nav-items-layout .right-bar a .link-size .icon2{
   width: 30px;
   margin-top: 11px;
   height: 30px;
   background-color: black;
   background-image: url();
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; 
 }
 
-body .main-nav .main-nav-items-layout .right-bar a .link-size .icon3 {
+body .main-nav .main-nav-items-layout .right-bar a .link-size .icon3{
   width: 30px;
   margin-top: 11px;
   height: 30px;
   background-color: black;
   background-image: url();
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; 
 }
 
 /*main-body*/
-body .main-body {
+body .main-body{
   width: 100%;
   height: 2000px;
 }
 
 /*short-by-bar*/
-body .main-body .sort-by-bar {
+body .main-body .sort-by-bar{
   width: 100%;
   height: 50px;
   position: sticky;
   top: 54px;
-  background-color: #ededed;
+  background-color: #ededed;  
 }
 
-body .main-body .sort-by-bar .sort-by-bar-layout {
+body .main-body .sort-by-bar .sort-by-bar-layout{
   width: 100%;
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
 }
 
-body .main-body .sort-by-bar .sort-by-bar-layout .sort-by {
+
+body .main-body .sort-by-bar .sort-by-bar-layout .sort-by{
   width: 600px;
   height: 50px;
   display: flex;
@@ -252,7 +287,7 @@ body .main-body .sort-by-bar .sort-by-bar-layout .sort-by {
   margin-left: 500px;
 }
 
-body .main-body .sort-by-bar .sort-by-bar-layout .sort-by .button {
+body .main-body .sort-by-bar .sort-by-bar-layout .sort-by .button{
   margin-right: 20px;
   height: 50px;
   bottom: 0px;
@@ -260,41 +295,40 @@ body .main-body .sort-by-bar .sort-by-bar-layout .sort-by .button {
   flex-flow: column nowrap;
   justify-content: flex-end;
 }
-
-body .main-body .sort-by-bar .sort-by-bar-layout .sort-by .button button {
+  
+body .main-body  .sort-by-bar .sort-by-bar-layout .sort-by .button button{
   border: none;
   padding: 6px;
   font-size: 90%;
   color: #555555;
   background-color: #ededed;
-  font-family: "Jost Semi";
+  font-family: 'Jost Semi'; 
 }
 
-body .main-body .sort-by-bar .sort-by-bar-layout .sort-by .button button:hover {
+body .main-body  .sort-by-bar .sort-by-bar-layout .sort-by .button button:hover{
   cursor: pointer;
   opacity: 0.9;
 }
 
-body .main-body .sort-by-bar .sort-by-bar-layout .sort-by .button button:focus {
+body .main-body .sort-by-bar .sort-by-bar-layout .sort-by .button button:focus{
   outline: none;
 }
 
-body .main-body .sort-by-bar .sort-by-bar-layout .sort-by .button #suggested {
+body .main-body .sort-by-bar .sort-by-bar-layout .sort-by .button #suggested{
   background-color: #7d29ac;
   color: white;
 }
 
 /*Nav-left styles*/
-body .main-body .nav-left {
+body .main-body .nav-left{
   width: 240px;
   height: calc(100vh -104px);
   background-color: #e0e0e0;
   position: sticky;
   top: 104px;
-  overflow-y: scroll;
 }
 
-body .main-body .nav-left .stories-box {
+body .main-body .nav-left .stories-box{
   width: 100%;
   height: 50px;
   display: flex;
@@ -302,20 +336,20 @@ body .main-body .nav-left .stories-box {
   justify-content: center;
 }
 
-body .main-body .nav-left .stories-box .stories-box-layout {
+body .main-body .nav-left .stories-box .stories-box-layout{
   margin-top: -50px;
   height: 50px;
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-around;
-}
+} 
 
-body .main-body .nav-left .stories-box .stories-box-layout .text {
+body .main-body .nav-left .stories-box .stories-box-layout .text{
   color: #555555;
   font-size: 160%;
 }
 
-body .main-body .nav-left .list {
+body .main-body .nav-left .list{
   width: 100%;
   margin-top: 25px;
   height: 200px;
@@ -326,29 +360,30 @@ body .main-body .nav-left .list {
   border-bottom: 2px solid grey;
 }
 
-body .main-body .nav-left .ad {
+body .main-body .nav-left .ad{
   width: calc(100% - 32px);
   height: 300px;
   border: 2px solid black;
   margin-top: 25px;
   margin-left: 15px;
-  font-family: "Arial";
+  font-family: 'Arial';
 }
 
-body .main-body .nav-left .links {
+body .main-body .nav-left .links{
   width: 84%;
   height: 80px;
   margin-top: 10px;
   margin-left: 15px;
+
 }
 
-body .main-body .nav-left .links a {
+body .main-body .nav-left .links a{
   color: grey;
   text-decoration: none;
   margin-right: 10px;
 }
 
-body .main-body .nav-left .copyright {
+body .main-body .nav-left .copyright{
   height: 25px;
   margin-left: 15px;
   color: grey;

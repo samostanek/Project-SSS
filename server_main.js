@@ -6,7 +6,7 @@ const flash = require("connect-flash");
 const util = require("./misc/util");
 const passport = require("passport");
 const morgan = require("morgan");
-const fs = require('fs');
+const fs = require("fs");
 
 const port = 3000;
 
@@ -18,22 +18,16 @@ const errShort = process.argv.indexOf("errShort") != -1;
 
 //Connect to mongodb with retry
 var connectWithRetry = function() {
-  return mongoose.connect(
-    fs.readFileSync('DBA.txt', 'utf8'),
-    { useNewUrlParser: true },
-    function(err) {
-      if (err) {
-        console.error(
-          "Failed to connect to mongo on startup - retrying in 5 sec"
-        );
-        if (!errShort) console.error(err);
-        setTimeout(connectWithRetry, 5000);
-      } else {
-        console.log("Successfully connected to database.");
-        util.log("SERVER", "STARTUP", "Successfully connected to DB", {});
-      }
+  return mongoose.connect(fs.readFileSync("DBA.txt", "utf8"), { useNewUrlParser: true }, function(err) {
+    if (err) {
+      console.error("Failed to connect to mongo on startup - retrying in 5 sec");
+      if (!errShort) console.error(err);
+      setTimeout(connectWithRetry, 5000);
+    } else {
+      console.log("Successfully connected to database.");
+      util.log("SERVER", "STARTUP", "Successfully connected to DB", {});
     }
-  );
+  });
 };
 connectWithRetry();
 
@@ -60,9 +54,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Connection logging
-app.use(
-  morgan(":date - :method - :url - :remote-addr - :status - :response-time")
-);
+app.use(morgan(":date - :method - :url - :remote-addr - :status - :response-time"));
 app.use((req, res, next) => {
   util.log("SERVER", "REQUEST", "", {
     request_method: req.method,

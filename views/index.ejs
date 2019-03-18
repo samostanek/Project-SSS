@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Storby</title>
-	<link rel="stylesheet" type="text/css" href="../css/storby.css">
+	<link rel="stylesheet" type="text/css" href="storby.css">
 	<script src="../js/jquery.min.js"></script>
 	<script src="../js/jquery-ui.min.js"></script>
 	<script> function SuggestedActive() {
@@ -29,9 +29,26 @@
 		document.getElementById('popular').style.backgroundColor=['#741Ba6']
 		document.getElementById('popular').style.color=['white']
 	}</script>
-	<script type="text/javascript"> function displaySearchBar(){
-		if (document.getElementById('hidden')){	
-		}
+	<script> function displaySearchBar(){
+		var a = document.getElementById('Sbar');
+		if (a.style.display === "none") {
+    	a.style.display = "block";
+  		} else {
+    	a.style.display = "none";
+  		}
+  		var b = document.getElementById('right-bar');
+  		if (b.style.display === "flex") {
+  		b.style.display = "none"
+  		} else {
+  		b.style.display = "flex"
+  		}
+  		var c = document.getElementById('logo');
+  		if (c.style.display === "block") {
+  		c.style.display = "none"
+  		} else {
+  		c.style.display = "block"
+  		}
+	}
 		
 	</script>
 </head>
@@ -40,20 +57,19 @@
 		<div class="main-nav">
 			<div class="main-nav-items-layout">
 				<div class="left-bar">
-					<div class="logo">
+					<div class="logo" id="logo">
 						<a href="">
 							<div class="logo-link"></div>
 						</a>
 					</div>
 					<div class="search-bar">
-						<input type="text" name="" placeholder="Search">
+						<input type="text" name="" placeholder="Search" id="Sbar">
 						<input type="button" name="">
-						<!--button id="HiddenSearchBar" onclick="displaySearchBar()">
-							<input type="text" name="" class="hidden">
-						</button-->
 					</div>
 				</div>
-				<div class="right-bar">
+				<div class="right-bar" id="right-bar">	
+					<button id="HiddenSearchBar" onclick="displaySearchBar()">
+					</button>
 					<div class="button">
 						<a href="">
 							<div class="link-size">

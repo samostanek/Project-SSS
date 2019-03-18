@@ -118,6 +118,19 @@ body .main-nav .main-nav-items-layout .left-bar .search-bar input[type=button]:f
   outline: none;
 }
 
+@media only screen and (min-width: 760px){
+  body .main-nav .main-nav-items-layout .right-bar{
+    display: flex !important;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    margin-left: 20px;
+  }
+
+  body .main-nav .main-nav-items-layout .left-bar .logo{
+    display: block !important;
+  }
+
+}
 @media only screen and (max-width: 760px) and (min-width: 581px){
   body .main-nav .main-nav-items-layout .left-bar .search-bar input[type=text]{
     width: 93.9%;
@@ -129,11 +142,16 @@ body .main-nav .main-nav-items-layout .left-bar .search-bar input[type=button]:f
   }
 
   body .main-nav .main-nav-items-layout .right-bar{
-    display: flex;
+    display: flex !important;
     flex-flow: row nowrap;
     justify-content: flex-start;
     margin-left: 20px;
   }
+
+  body .main-nav .main-nav-items-layout .left-bar .logo{
+    display: block !important;
+  }
+
 } 
 
 @media only screen and (max-width: 400px){

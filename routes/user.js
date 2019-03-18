@@ -7,7 +7,6 @@ const passport = require("passport");
 const User = require("../models/user");
 
 router.get("/login", (req, res) => {
-<<<<<<< HEAD
   if (req.user) {
     console.log(req.user.uName);
     res.render("login", {
@@ -22,10 +21,6 @@ router.get("/login", (req, res) => {
       uname: null
     });
   }
-=======
-  console.log('test');
-	res.render("login", { msgError: req.flash("error"), msg_success: req.flash("msg_success")});
->>>>>>> parent of a86353a... Started story
 });
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", {
@@ -46,9 +41,7 @@ router.get("/logout", (req, res) => {
   res.redirect("./login");
 });
 
-router.get("/register", (req, res) =>
-  res.render("register", { errors: null, username: null, email: null })
-);
+router.get("/register", (req, res) => res.render("register", { errors: null, username: null, email: null }));
 router.post("/register", (req, res) => {
   const { username, email, pwd, pwdrpt } = req.body;
 
@@ -68,12 +61,11 @@ router.post("/register", (req, res) => {
         if (user) {
           // TODO: Differenciate email and username
           errors.push({ msg: "Email or username already taken." });
-          util.log(
-            "USER",
-            "REGISTER",
-            "User tried to register: failed. Email or username is already taken",
-            { ip: req.ip, username: user.uName, userID: user._id }
-          );
+          util.log("USER", "REGISTER", "User tried to register: failed. Email or username is already taken", {
+            ip: req.ip,
+            username: user.uName,
+            userID: user._id
+          });
           res.render("register", { errors, username, email });
         } else {
           const newUser = new User({ uName: username, mail: email, pwd: pwd });

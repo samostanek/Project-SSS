@@ -79,6 +79,7 @@ app.use((req, res, next) => {
 app.use(flash());
 
 // Routers
+app.use("/story", require("./routes/story"))
 app.use("/user", require("./routes/user"));
 app.use("/", require("./routes/index"));
 

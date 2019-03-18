@@ -7,7 +7,6 @@ const passport = require("passport");
 const User = require("../models/user");
 
 router.get("/login", (req, res) => {
-  console.log('test');
 	res.render("login", { msgError: req.flash("error"), msg_success: req.flash("msg_success")});
 });
 router.post("/login", (req, res, next) => {

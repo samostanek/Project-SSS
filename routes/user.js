@@ -7,6 +7,7 @@ const passport = require("passport");
 const User = require("../models/user");
 
 router.get("/login", (req, res) => {
+<<<<<<< HEAD
   if (req.user) {
     console.log(req.user.uName);
     res.render("login", {
@@ -21,6 +22,10 @@ router.get("/login", (req, res) => {
       uname: null
     });
   }
+=======
+  console.log('test');
+	res.render("login", { msgError: req.flash("error"), msg_success: req.flash("msg_success")});
+>>>>>>> parent of a86353a... Started story
 });
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", {

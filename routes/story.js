@@ -1,16 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const util = require("../misc/util");
 
-const Story = require("../models/story");
+const User = require("../models/user");
 
 router.get("/add", (req, res) => {
-  if (req.user) {
-    req.flash("msgError", "You need to be logged in to perform this action.");
-    res.redirect("../user/login");
-  } else {
-    res.render("addStory", { uName: req.user.uName });
-  }
+  res.render("addStory", {
+    user: req.body
+  });
 });
 
 module.exports = router;

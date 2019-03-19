@@ -31,12 +31,12 @@ router.post("/login", (req, res, next) => {
 });
 
 router.get("/logout", (req, res) => {
-  util.log("SERVER", "LOGIN", "USer has logged out.", {
+  util.log("SERVER", "LOGIN", "User has logged out.", {
     ip: req.ip,
     username: req.user.uName,
     userID: req.user._id
   });
-  if (req.body.submit) req.logout();
+  req.logout();
   req.flash("success_msg", "You are logged out");
   res.redirect("./login");
 });

@@ -1,4 +1,5 @@
 .idea
+.prettierignore
 .jshintrc
 node_modules
 storby_admin

@@ -10,6 +10,8 @@ module.exports = mongoose.model(
     private: { type: Boolean, default: false },
     vote_type: { type: String, default: "OPEN" },
     start_sequels: { type: Array, default: [] },
-    comments: { type: Array, default: [] }
+    comments: { type: Array, default: [] },
+    rating: { type: Array, default: [] },
+    followers: { type: Array, default: [] }
   })
 );

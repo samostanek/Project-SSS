@@ -3,6 +3,21 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const util = require("../misc/util");
 const passport = require("passport");
+const validator = require("validator");
+const fs = require("fs");
+const jwt = require("jsonwebtoken");
+
+const PASS = fs
+  .readFileSync("./PASS.txt", "utf8")
+  .toString()
+  .split("\n");
+
+const transporter = require("nodemailer").createTransport({
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false,
+  auth: { user: PASS[1], pass: PASS[2] }
+});
 
 const User = require("../models/user");
 
@@ -47,6 +62,7 @@ router.post("/register", (req, res) => {
 
   var errors = [];
   if (!username || !email || !pwd || !pwdrpt) errors.push({ msg: "Please fill in all fields." });
+  if (!validator.isEmail(email)) errors.push({ msg: "Not a valid email." });
   if (pwd !== pwdrpt) errors.push({ msg: "Passwords do not match." });
   if (pwd.length < 5) errors.push({ msg: "Password must be at least 5 characters" });
   if (errors.length > 0) {
@@ -85,15 +101,43 @@ router.post("/register", (req, res) => {
                     userID: user._id
                   });
                   req.flash("msg_success", "You successfully registered!");
+                  req.flash("msg_ver", "You have to verify your email before log in.");
+                  jwt.sign({ forMail: email }, null, { algorithm: "none" }, (err, token) => {
+                    if (err) console.error(err);
+                    transporter.sendMail({
+                      from: "samostanek@gmail.com",
+                      to: email,
+                      subject: "Confirm Email",
+                      html:
+                        "Verify you email by clicking on this link: <a href='storby.hopto.org/user/verification/" +
+                        token +
+                        "'>storby.hopto.org/user/verification/" +
+                        token +
+                        "</a>"
+                    });
+                  });
                   res.redirect("/user/login");
                 })
-                .catch(err => console.log(err));
+                .catch(err => console.error(err));
             });
           });
         }
       })
-      .catch(err => console.log(err));
+      .catch(err => console.error(err));
   }
+});
+
+router.get("/verification/:token", (req, res) => {
+  jwt.verify(req.params.token, null, { algorithms: ["none"] }, function(err, decoded) {
+    console.log(req.params.token);
+
+    if (err) return res.end("Token is not valid: " + err.toString());
+    User.update({ mail: decoded.mail }, { verified: true }, (err, raw) => {
+      if (err) console.error(err);
+    });
+  });
+  req.flash("msg_success", "Your email was successfully verified");
+  res.redirect("/user/login");
 });
 
 module.exports = router;

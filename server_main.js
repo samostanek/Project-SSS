@@ -7,6 +7,12 @@ const util = require("./misc/util");
 const passport = require("passport");
 const morgan = require("morgan");
 const fs = require("fs");
+const http = require("http");
+const https = require("https");
+const credentials = {
+  key: fs.readFileSync("privkey.pem", "utf8"),
+  cert: fs.readFileSync("cert.pem", "utf8")
+};
 
 const port = 3000;
 
@@ -74,4 +80,11 @@ app.use(flash());
 app.use("/user", require("./routes/user"));
 app.use("/", require("./routes/index"));
 
-app.listen(port, () => console.log("Listening on port: " + port));
+var httpServer = http.createServer(app);
+var httpsServer = https.createServer(credentials, app);
+
+//httpServer.listen(8080);
+httpsServer.listen(3000);
+console.log("Listening on port: " + port);
+
+//app.listen(port, () => console.log("Listening on port: " + port));

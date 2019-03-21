@@ -2,4 +2,5 @@
 .jshintrc
 node_modules
 storby_admin
+PASS.txt
 DBA.txt

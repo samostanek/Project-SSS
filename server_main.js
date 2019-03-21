@@ -8,11 +8,11 @@ const passport = require("passport");
 const morgan = require("morgan");
 const fs = require("fs");
 const http = require("http");
-const https = require("https");
-const credentials = {
-  key: fs.readFileSync("privkey.pem", "utf8"),
-  cert: fs.readFileSync("cert.pem", "utf8")
-};
+//const https = require("https");
+// const credentials = {
+//   key: fs.readFileSync("privkey.pem", "utf8"),
+//   cert: fs.readFileSync("cert.pem", "utf8")
+// };
 
 const port = 3000;
 
@@ -81,10 +81,10 @@ app.use("/user", require("./routes/user"));
 app.use("/", require("./routes/index"));
 
 var httpServer = http.createServer(app);
-var httpsServer = https.createServer(credentials, app);
+//var httpsServer = https.createServer(credentials, app);
 
-//httpServer.listen(8080);
-httpsServer.listen(3000);
+httpServer.listen(port);
+//httpsServer.listen(3000);
 console.log("Listening on port: " + port);
 
 //app.listen(port, () => console.log("Listening on port: " + port));

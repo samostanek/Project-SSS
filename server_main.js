@@ -9,12 +9,20 @@ const morgan = require("morgan");
 const fs = require("fs");
 const http = require("http");
 const https = require("https");
- const credentials = {
-   key: fs.readFileSync("privkey.pem", "utf8"),
-   cert: fs.readFileSync("cert.pem", "utf8")
- };
 
-const port = 3000;
+// Reading config
+// Attributes sorted by enter as followed: sport, port, privkey, certificate
+const config = fs
+  .readFileSync("CONFIG.txt", "utf8")
+  .toString()
+  .split("\n");
+const credentials = {
+  key: fs.readFileSync(config[2], "utf8"),
+  cert: fs.readFileSync(config[3], "utf8")
+};
+
+const sport = config[0];
+const port = config[1];
 
 require("./misc/passport")(passport);
 
@@ -36,6 +44,12 @@ var connectWithRetry = function() {
   });
 };
 connectWithRetry();
+
+app.use(function(req, res, next) {
+  if (!req.secure) {
+    res.redirect("https://" + req.headers.host + req.url);
+  } else next();
+});
 
 //Publics
 app.use(express.static("public"));
@@ -83,8 +97,6 @@ app.use("/", require("./routes/index"));
 var httpServer = http.createServer(app);
 var httpsServer = https.createServer(credentials, app);
 
-//httpServer.listen(port);
-httpsServer.listen(port);
+httpServer.listen(port);
+httpsServer.listen(sport);
 console.log("Listening on port: " + port);
-
-//app.listen(port, () => console.log("Listening on port: " + port));

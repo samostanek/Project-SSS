@@ -11,18 +11,14 @@ const http = require("http");
 const https = require("https");
 
 // Reading config
-// Attributes sorted by enter as followed: sport, port, privkey, certificate
-const config = fs
-  .readFileSync("CONFIG.txt", "utf8")
-  .toString()
-  .split("\n");
+const config = JSON.parse(fs.readFileSync("config.json", "utf8"));
 const credentials = {
-  key: fs.readFileSync(config[2], "utf8"),
-  cert: fs.readFileSync(config[3], "utf8")
+  key: fs.readFileSync(config.privkey, "utf8"),
+  cert: fs.readFileSync(config.cert, "utf8")
 };
 
-const sport = config[0];
-const port = config[1];
+const sport = config.sport;
+const port = config.port;
 
 require("./misc/passport")(passport);
 

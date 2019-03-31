@@ -12,12 +12,13 @@ const https = require("https");
 
 // Reading config
 const config = JSON.parse(fs.readFileSync("config.json", "utf8"));
-const credentials = {
-  key: fs.readFileSync(config.privkey, "utf8"),
-  cert: fs.readFileSync(config.cert, "utf8")
-};
+if (config.https)
+  var credentials = {
+    key: fs.readFileSync(config.privkey, "utf8"),
+    cert: fs.readFileSync(config.cert, "utf8")
+  };
 
-const sport = config.sport;
+if (config.https) var sport = config.sport;
 const port = config.port;
 
 require("./misc/passport")(passport);
@@ -28,7 +29,7 @@ const errShort = process.argv.indexOf("errShort") != -1;
 
 //Connect to mongodb with retry
 var connectWithRetry = function() {
-  return mongoose.connect(fs.readFileSync("DBA.txt", "utf8"), { useNewUrlParser: true }, function(err) {
+  return mongoose.connect(config.credentials, { useNewUrlParser: true }, function(err) {
     if (err) {
       console.error("Failed to connect to mongo on startup - retrying in 5 sec");
       if (!errShort) console.error(err);
@@ -41,12 +42,13 @@ var connectWithRetry = function() {
 };
 connectWithRetry();
 
-app.use(function(req, res, next) {
-  if (!req.secure) {
-    res.redirect("https://" + req.headers.host + req.url);
-  } else next();
-});
-
+if (config.https) {
+  app.use(function(req, res, next) {
+    if (!req.secure) {
+      res.redirect("https://" + req.headers.host + req.url);
+    } else next();
+  });
+}
 //Publics
 app.use(express.static("public"));
 
@@ -91,8 +93,8 @@ app.use("/user", require("./routes/user"));
 app.use("/", require("./routes/index"));
 
 var httpServer = http.createServer(app);
-var httpsServer = https.createServer(credentials, app);
+if (config.https) var httpsServer = https.createServer(credentials, app);
 
 httpServer.listen(port);
-httpsServer.listen(sport);
+if (config.https) httpsServer.listen(sport);
 console.log("Listening on port: " + port);
